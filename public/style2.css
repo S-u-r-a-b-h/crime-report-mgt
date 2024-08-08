@@ -1,0 +1,160 @@
+/* Global Styles */
+
+
+/* Section Styles */
+#aboutUs1 {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* Heading Styles */
+#aboutUS1 h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#aboutUs1 h3 {
+    color:  #4A4E69;
+}
+
+/* Paragraph Styles */
+#aboutUs1 p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* List Styles */
+#aboutUs1 ul {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+#aboutUs1 li {
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Contact Information Styles */
+.contact-info {
+    margin-top: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+.contact-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+/* Style the feedback section */
+#feedback1 {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 600px;
+}
+
+/* Style the heading */
+#feedback1 h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+#feedback1 p{
+    color: #333;
+}
+
+
+/* Style the  feedback form */
+#feedback1 form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style the form labels */
+#feedback1 form label {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Style the form inputs and textarea */
+#feedback1 form input[type="text"],
+#feedback1 form input[type="email"],
+#feedback1 form textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9; /* Input background color */
+}
+
+/* Style the submit button */
+#feedback1 form button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px
+}
+
+
+/* Style the website policies section */
+/* Style the website policies section */
+#websitePolicies1 {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 600px;
+    background-color: #f9f9f9; /* Background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+/* Style the heading */
+#websitePolicies1 h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Style the paragraph */
+#websitePolicies1 p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+
+
+/* Section Styles */
+#disclaimer1 {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* Heading Styles */
+#disclaimer1 h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Paragraph Styles */
+#disclaimer1 p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+    

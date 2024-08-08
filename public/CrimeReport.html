@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Crime Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff6347, #4682b4);
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            color: #fff;
+            position: relative;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        #userType {
+            padding: 10px 15px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #userType option {
+            padding: 12px 16px;
+            display: block;
+            border: none;
+            background-color: #f9f9f9;
+            color: black;
+            cursor: pointer;
+        }
+
+        #userType option:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover #userType {
+            display: block;
+        }
+
+        .logo {
+            height: 100px;
+            width: 200px;
+            background-image: url("crime-trans.png");
+            background-size: cover;
+        }
+
+        .panel ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .panel ul li {
+            display: inline;
+            margin-right: 25px;
+        }
+
+        .panel ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .searchinput {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .searchinput img {
+            height: 30px;
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        input[type="text"] {
+            height: 40px;
+            width: 300px;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        #complaintList {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .complaint {
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 20px;
+        }
+
+        .complaint:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .complaint h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        .complaint p {
+            margin: 5px 0;
+        }
+
+        .complaint button {
+            background-color: #fff;
+            color: #007bff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .complaint button:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+
+        #exitButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #fff;
+            color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #exitButton:hover {
+            background-color: #c82333;
+            color: #fff;
+        }
+
+        .navbar-second {
+            background-color: rgb(38, 36, 36);
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar-second marquee {
+            width: 100%;
+            height: 100%;
+        }
+
+        .navbar-second p {
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div class="logo"></div>
+        <div class="panel">
+            <ul>
+                <li><a href="#" class="aboutUs"><i class="fas fa-address-card"></i> About Us</a></li>
+                <li><a href="#" class="contactUs"><i class="fas fa-phone"></i> Contact Us</a></li>
+                <li><a href="#" class="crimeList"><i class="fas fa-ellipsis-vertical"></i> Crime List</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown">
+            <select id="userType">
+                <option value="user" selected>Login as User</option>
+                <option value="police">Login as Police</option>
+                <option value="register">Register as User</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Additional navbar -->
+    <nav class="navbar-second">
+        <marquee behavior="scroll" direction="left">
+            <p>"Crime undermines the fabric of society, eroding trust and stability."</p>
+        </marquee>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="searchinput">
+        <img src="search.png" id="searchImg" alt="img" />
+        <input type="text" id="searchInput" name="search" placeholder="Search Record"/>
+        <button id="searchButton">Search</button>
+    </div>
+
+    <div id="complaintList"></div>
+</div>
+
+<button id="exitButton" onclick="goToHomePage()">Exit</button>
+
+<script>
+    $(document).ready(function () {
+        // Function to load complaints initially
+        loadComplaints();
+
+        // Function to load complaints
+        function loadComplaints() {
+            $.get("/complaints", function (data) {
+                displayComplaints(data);
+            });
+        }
+
+        // Function to display complaints
+        function displayComplaints(data) {
+            $("#complaintList").empty();
+            data.forEach(function (complaint) {
+                $("#complaintList").append(`
+                <div class="complaint" data-description="${complaint.Description}">
+                    <h3>${complaint.Crime_Type}</h3>
+                    <p><strong>Name:</strong> ${complaint.Name}</p>
+                    <p><strong>Complaint Id:</strong> ${complaint.complaintID}</p>
+                    <p><strong>Description:</strong> ${complaint.Description}</p>
+                    <p><strong>Location:</strong> ${complaint.Location}</p>
+                    <p><strong>Date/Time:</strong> ${complaint.Date_Time}</p>
+                    <button class="update">Update</button>
+                    <button class="delete">Delete</button>
+                </div>
+                `);
+            });
+        }
+
+        // Click event for delete button
+        $(document).on("click", ".complaint button.delete", function () {
+            var complaintDiv = $(this).closest(".complaint");
+            var complaintDescription = complaintDiv.data("description");
+            $.post(
+                "/delete-complaint",
+                { description: complaintDescription },
+                function (response) {
+                    console.log(response);
+                    complaintDiv.remove();
+                }
+            );
+        });
+
+        // Function to handle search on Enter key press
+        $("#searchInput").on("keydown", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                var searchTerm = $(this).val().trim().toLowerCase();
+                if (searchTerm.length === 0) {
+                    loadComplaints(); // Reload all complaints if search input is empty
+                    return;
+                }
+
+                $.get("/complaints", function (data) {
+                    var filteredComplaints = data.filter(function (complaint) {
+                        return complaint.Name.toLowerCase().includes(searchTerm);
+                    });
+                    displayComplaints(filteredComplaints);
+                });
+            }
+        });
+
+        // Function to handle update button click
+        $(document).on("click", ".complaint button.update", function () {
+            window.location.href = "update.html"; // Redirect to update page
+        });
+
+        // Function to handle navigation
+        $(".aboutUs").click(function (event) {
+            event.preventDefault();
+            loadContent("about-us.html");
+        });
+
+        $(".contactUs").click(function (event) {
+            event.preventDefault();
+            loadContent("contact-us.html");
+        });
+
+        $(".crimeList").click(function (event) {
+            event.preventDefault();
+            loadContent("crime-list.html");
+        });
+
+        function loadContent(url) {
+            $.ajax({
+                url: url,
+                type: "GET",
+                success: function (response) {
+                    $("#complaintList").html(response); // Display content in content area
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr, status, error);
+                },
+            });
+        }
+
+        // Dropdown navigation
+        $("#userType").change(function () {
+            var selectedValue = $(this).val();
+            switch (selectedValue) {
+                case "user":
+                    window.location.href = "user_login.html";
+                    break;
+                case "police":
+                    window.location.href = "police_login.html";
+                    break;
+                case "register":
+                    window.location.href = "user_registration.html";
+                    break;
+                default:
+                    break;
+            }
+        });
+
+        // Function to navigate to home page
+        function goToHomePage() {
+            window.location.href = "index.html";
+        }
+    });
+</script>
+</body>
+</html>
