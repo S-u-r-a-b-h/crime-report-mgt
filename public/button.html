@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Show Data</title>
+<style>
+  body {
+    background: linear-gradient(135deg, #ff6347, #4682b4);
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .button:hover {
+    background-color: #413e3e; 
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Welcome to Crime Report System</h1>
+  <p>Please click below to view the data or feedback</p>
+  <a href="crimeReport.html">
+    <button class="button">Show Data</button>
+  </a>
+  <a href="FeedbackReport.html">
+    <button class="button">Show Feedback</button>
+  </a>
+</div>
+
+</body>
+</html>

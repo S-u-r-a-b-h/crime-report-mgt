@@ -1,0 +1,418 @@
+*{
+    font-family: "Nunito", sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    
+}
+/* Style the dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Style the dropdown select */
+  #userType {
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Style the dropdown select options */
+  #userType option {
+    padding: 12px 16px;
+    display: block;
+    border: none;
+    background-color: #f9f9f9;
+    color: black;
+    cursor: pointer;
+  }
+  
+  /* Style the dropdown select options on hover */
+  #userType option:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Show the dropdown options when the dropdown select is clicked */
+  .dropdown:hover #userType {
+    display: block;
+  }
+  
+
+.main {
+    height: 90vh; 
+    width: 100vw; 
+
+}
+
+.logo {
+    height: 100px;
+    width: 200px;
+    background-image: url("crime-trans.png");
+    background-size: cover;
+}
+
+li {
+    display: inline;
+    margin-right: 25px;
+}
+.optionp{
+    text-decoration: none;
+}
+.aboutUs {
+    text-decoration: none;
+    color: black;
+}
+.contactUs {
+    text-decoration: none;
+    color: black;
+}
+.crimeList{
+    text-decoration: none;
+    color: black;
+}
+
+.button_hover {
+    border-radius: 5px;
+    background-color: black;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.button_hover:hover {
+    background-color: #413e3e;
+}
+.footer_main {
+    position: relative;
+    top: 1000;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; 
+    background-color: rgb(38, 36, 36);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* Additional styling for child elements */
+.footer_main .options ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer_main .options ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer_main .options ul li:last-child {
+    margin-right: 0; 
+}
+
+.options a {
+    color: white;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-left: 10px;
+}
+
+.logos i {
+    display: inline;
+    margin-right: 20px;
+}
+.logop{
+    text-decoration: none;
+}
+ /* Additional navbar styles */
+ .navbar-second {
+    background-color: rgb(38, 36, 36);
+    color: white;
+    padding: 10px 20px;
+}
+
+.navbar-second marquee {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-second p {
+    font-size: 16px;
+    margin: 0;
+    padding:  0;
+}
+#contentArea {
+    margin-bottom: 100px; 
+}
+
+
+
+/*.container {*/
+    
+    /* margin: 120px; */
+    /* width: 100%; */
+    /* display: flex; *
+    margin-bottom: 20px; /* Add margin between the rows 
+}*/
+
+.one,
+.two,
+.three,
+.four {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+.cyberCrime,
+.domesticCrime,
+.assault,
+.crimeabroad,
+.robbery,
+.murder,
+.terrorism,
+.stalking {
+    background-color: #f9f9f9;
+    border: 1px solid black;
+    margin: 12px;
+    padding: 12px;
+    width: 628px;
+}
+
+.cyberCrime,
+.domesticCrime,
+.assault,
+.crimeabroad,
+.robbery,
+.murder,
+.stalking {
+    height: 118px;
+}
+
+.container a{
+    text-decoration: none;
+    color: #4A4E69; 
+}
+
+.container p{
+    color: #6B705C; 
+}
+
+/* Contact Form Styles */
+#contactUs1 form {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+#contactUs1 p{
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 150px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Contact Information Styles */
+.contact-info {
+    margin-top: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+.contact-info a {
+    color: #007bff;
+}
+
+.slideShow{
+    height: 100%;
+    width: 100%;
+    background-color: #007bff;
+    overflow: hidden;
+}
+
+.image{
+    height: 100%;
+    width: 100%;
+    background-color: #538cc9;
+}
+
+.image img{
+    height: 100%;
+    width: 100%;
+}
+
+
+.main,
+.main2,
+.main3 {
+    width: 100%; 
+    
+}
+
+.main2 {
+    display: flex;
+   padding-top: 10px;
+   padding-bottom: 10px;
+    background-color: black;
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/*section1 styling*/
+.section1 {
+    flex: 1;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.map-container {
+    width: 100%;
+    height: 100%; 
+    border-radius: 8px;
+    
+}
+/*section2 styling*/
+.section2 {
+    flex: 2;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.section2 h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.section2 p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.section2 ul {
+    list-style-type:disc; 
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.section2 li {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+} 
+
+/*main3 styling*/
+
+.main3{
+    height: 80%;
+    margin: auto;
+}
+.main3 h2{
+        font-size: 32px;
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+}
+    
+
+
+/*news stytling*/
+#liveNewsContainer {
+    height: 400px; 
+    overflow-y: scroll;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    background-color: #f9f9f9;
+}
+
+.live-news-article {
+    margin-bottom: 20px;
+    padding-bottom: 10px; 
+    border-bottom: 1px solid #eee; 
+}
+
+.live-news-article:last-child {
+    margin-bottom: 0; 
+    border-bottom: none; 
+}
+
+.live-news-article h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333; 
+}
+
+.live-news-article p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #333;
+} 
+
+.live-news-article a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.live-news-article a:hover {
+    text-decoration: underline;
+}
+
+
+

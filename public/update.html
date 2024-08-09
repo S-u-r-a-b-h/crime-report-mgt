@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff6347, #4682b4);
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            color: #fff; /* Set text color to white for better contrast */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+        }
+
+        input[type="text"] {
+            height: 35px;
+            margin-bottom: 15px;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        input[type="submit"] {
+            height: 40px;
+            background-color: black;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #413e3e;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#userType {
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#userType option {
+    padding: 12px 16px;
+    display: block;
+    border: none;
+    background-color: #f9f9f9;
+    color: black;
+    cursor: pointer;
+}
+
+#userType option:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover #userType {
+    display: block;
+}
+.logo {
+    height: 100px;
+    width: 200px;
+    background-image: url("crime-trans.png"); 
+    background-size: cover;
+}
+
+.panel ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.panel ul li {
+    display: inline;
+    margin-right: 25px;
+}
+
+.panel ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-second {
+    background-color: rgb(38, 36, 36);
+    color: white;
+    padding: 10px 20px;
+}
+
+.navbar-second marquee {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-second p {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+        <div class="logo"></div>
+        <div class="panel">
+            <ul> 
+                <li><a href="#" class="aboutUs"><i class="fas fa-address-card"></i> About Us</a></li>
+                <li><a href="#" class="contactUs"><i class="fas fa-phone"></i> Contact Us</a></li>
+                <li><a href="#" class="crimeList"><i class="fas fa-ellipsis-vertical"></i> Crime List</a></li>
+            </ul>
+        </div>           
+       
+        <div class="dropdown">
+            <select id="userType">
+                <option value="user" selected>Login as User</option>
+                <option value="police">Login as Police</option>
+                <option value="register">Register as User</option>
+            </select>
+        </div>
+    </div>
+    
+     <!-- Additional navbar -->
+     
+<nav class="navbar-second">
+<marquee behavior="scroll" direction="left">
+    <p>"Crime undermines the fabric of society, eroding trust and stability."</p>
+</marquee>
+</nav>
+</header>
+
+  <form method="post" action="/update">
+      <h1>UPDATE PAGE</h1>
+      <label for="cid">Complaint ID:</label>
+      <input type="text" id="cid" name="cid">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name">
+      <label for="desc">Description:</label>
+      <input type="text" id="desc" name="description">
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location">
+      <label for="status">Status:</label>
+      <input type="text" id="status" name="status">
+
+      <label for="complaint_update">complaint update:</label>
+      <input type="text" id="complaint_update" name="complaint_update">
+      
+      <input type="submit" value="Update">
+      	
+  </form>
+
+</body>
+</html>

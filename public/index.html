@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <title>Crime Report Management</title>
+      </head>
+      <body>
+        <header>
+          <div class="navbar">
+            <a href="index.html">
+              <div class="logo"></div>
+            </a>
+            <div class="panel">
+              <ul>
+                <li>
+                  <a href="about-us.html" class="aboutUs"><i class="fas fa-address-card"></i> About Us</a>
+                </li>
+                <li>
+                  <a href="contact-us.html" class="contactUs"><i class="fas fa-phone"></i> Contact Us</a>
+                </li>
+                <li>
+                  <a href="crime-list.html" class="crimeList"><i class="fas fa-ellipsis-vertical"></i> Crime List</a>
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <select id="userType">
+                <option value="user" selected>Login as User</option>
+                <option value="police">Login as Police</option>
+                <option value="register">Register as User</option>
+              </select>
+            </div>
+          </div>
+          <nav class="navbar-second">
+            <marquee behavior="scroll" direction="left">
+              <p>"Crime undermines the fabric of society, eroding trust and stability."</p>
+            </marquee>
+          </nav>
+        </header>
+        <div class="main" id="contentArea">
+          <div class="slideShow">
+            <div class="image">
+              <img src="https://images.caxton.co.za/wp-content/uploads/sites/2/2023/08/Feauredimages34_95504-e1692623051761-780x470.jpg" alt="image" />
+            </div>
+            <div class="image">
+              <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202305/arrest_8-sixteen_nine.jpg?VersionId=F77o_xczhrWzALhKAqBWDRdMtOaabdQV&size=690:388" alt="image" />
+            </div>
+            <div class="image">
+              <img src="https://news.wttw.com/sites/default/files/styles/full/public/field/image/Racial_Injustice_Wounded_Police_20270715842514Crop.jpg?itok=2U2FshTv" alt="image" />
+            </div>
+            <div class="image">
+              <img src="https://media.istockphoto.com/id/1249400249/photo/american-policeman-and-police-car-in-the-background.webp?b=1&s=612x612&w=0&k=20&c=pOIf9izQyEG2Pi-inMoNnt2Vh8C05pNAtZFff4Piolo=" alt="image" />
+            </div>
+          </div>
+          <div class="main2">
+            <div class="section1">
+              <div class="map-container" id="map"></div>
+            </div>
+            <div class="section2">
+              <h2>Crime Report Management</h2>
+              <p>Crime report management involves the collection, analysis, and storage of data related to criminal activities within a jurisdiction. It plays a crucial role in law enforcement agencies' efforts to maintain public safety and prevent crime.</p>
+              <p>Key components of crime report management systems include:</p>
+              <ul>
+                <li>Incident Reporting: Capturing details of reported criminal incidents, including date, time, location, and nature of the crime.</li>
+                <li>Investigation Tracking: Monitoring the progress of investigations, assigning cases to investigators, and tracking case statuses.</li>
+                <li>Data Analysis: Analyzing crime data to identify patterns, trends, and hotspots, which can inform resource allocation and crime prevention strategies.</li>
+                <li>Record Management: Maintaining comprehensive records of criminal incidents, arrests, suspects, and victims for legal and administrative purposes.</li>
+                <li>Information Sharing: Facilitating collaboration and information sharing among law enforcement agencies, government departments, and other stakeholders.</li>
+                <li>Reporting and Visualization: Generating reports, statistics, and visualizations to communicate crime trends, outcomes, and performance metrics.</li>
+              </ul>
+              <p>Modern crime report management systems often leverage technology, such as computer-aided dispatch (CAD) systems, crime mapping software, and data analytics tools, to enhance efficiency, accuracy, and transparency in law enforcement operations.</p>
+              <p>Effective crime report management is essential for proactive policing, resource optimization, community engagement, and ultimately, enhancing public safety and reducing crime rates.</p>
+            </div>
+          </div>
+          <div class="main3">
+            <h2>READ NEWS</h2>
+            <div id="liveNewsContainer"></div>
+          </div>
+          <div class="footer_main">
+            <div class="options">
+              <ul>
+                <li><a href="feedback.html" class="optionp" id="feedback">Feedback</a></li>
+                <li><a href="website-policies.html" class="optionp" id="websitePolicies">Website Policies</a></li>
+                <li><a href="disclaimer.html" class="optionp" id="disclaimer">Disclaimer</a></li>
+              </ul>
+            </div>
+            <div class="logos">
+              <a href="https://www.facebook.com/yourpage" class="logop" style="color: white" target="_blank"><i class="fab fa-facebook"></i></a>
+              <a href="https://www.instagram.com/yourprofile" class="logop" style="color: white" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/sourabh-mudgal-9039ba2b3/" class="logop" style="color: white" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="mailto:mudgalsaurabh1@gmail.com" class="logop" style="color: white"><i class="far fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+        <script src="script.js"></script>
+      </body>
+    </html>
+    

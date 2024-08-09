@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            position: relative; /* Add relative positioning to the body */
+        }
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        /* Style for the exit button */
+        #exitButton {
+            position: fixed;
+            bottom: 20px; 
+            right: 20px; 
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #exitButton:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>User Login</h2>
+        <form method="post" action="/login">
+            <label for="uname">Username:</label>
+            <input type="text" name="uname" id="uname">
+            <label for="upass">Password:</label>
+            <input type="password" name="upass" id="upass">
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <!-- Exit button -->
+    <button id="exitButton" onclick="goToHomePage()">Exit</button>
+
+    <script>
+        function goToHomePage() {
+            window.location.href = "index.html"; 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Report</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff6347, #4682b4);
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            color: #fff; /* Set text color to white for better contrast */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #feedbackSection {
+            display: block;
+        }
+
+        #feedbackList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #feedbackList li {
+            background-color: rgba(255, 255, 255, 0.2); /* Set a semi-transparent white background */
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #feedbackList li strong {
+            font-weight: bold;
+        }
+
+        /* Style for the exit button */
+        #exitButton {
+            position: fixed;
+            bottom: 20px; /* Adjust as needed */
+            right: 20px; /* Adjust as needed */
+            padding: 10px 20px;
+            background-color:  #fff; 
+            color: #007bff; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #exitButton:hover {
+            background-color: #c82333;
+            color: #fff; 
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        #userType {
+            padding: 10px 15px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #userType option {
+            padding: 12px 16px;
+            display: block;
+            border: none;
+            background-color: #f9f9f9;
+            color: black;
+            cursor: pointer;
+        }
+
+        #userType option:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover #userType {
+            display: block;
+        }
+
+        .logo {
+            height: 100px;
+            width: 200px;
+            background-image: url("crime-trans.png"); 
+            background-size: cover;
+        }
+
+        .panel ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .panel ul li {
+            display: inline;
+            margin-right: 25px;
+        }
+
+        .panel ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .navbar-second {
+            background-color: rgb(38, 36, 36);
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar-second marquee {
+            width: 100%;
+            height: 100%;
+        }
+
+        .navbar-second p {
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo"></div>
+            <div class="panel">
+                <ul> 
+                    <li><a href="#" class="aboutUs"><i class="fas fa-address-card"></i> About Us</a></li>
+                    <li><a href="#" class="contactUs"><i class="fas fa-phone"></i> Contact Us</a></li>
+                    <li><a href="#" class="crimeList"><i class="fas fa-ellipsis-vertical"></i> Crime List</a></li>
+                </ul>
+            </div>           
+           
+            <div class="dropdown">
+                <select id="userType">
+                    <option value="user" selected>Login as User</option>
+                    <option value="police">Login as Police</option>
+                    <option value="register">Register as User</option>
+                </select>
+            </div>
+        </div>
+        
+         <!-- Additional navbar -->
+         
+    <nav class="navbar-second">
+    <marquee behavior="scroll" direction="left">
+        <p>"Crime undermines the fabric of society, eroding trust and stability."</p>
+    </marquee>
+    </nav>
+    </header>
+
+<div class="container">
+    <div id="feedbackSection">
+        <h1>Feedback Report</h1>
+        <ul id="feedbackList"></ul>
+    </div>
+</div>
+
+<!-- Exit button -->
+<button id="exitButton" onclick="goToHomePage()">Exit</button>
+
+<!-- Content area for loading HTML content -->
+<div id="contentArea"></div>
+
+<script>
+    fetch('/feedback')
+        .then(response => response.json())
+        .then(data => {
+            const feedbackList = document.getElementById('feedbackList');
+            data.forEach(feedback => {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>Name:</strong> ${feedback.Name}<br>
+                        <strong>Email:</strong> ${feedback.Email}<br>
+                        <strong>Description:</strong> ${feedback.Message}`;
+                feedbackList.appendChild(li);
+            });
+        })
+        .catch(error => console.error('Error fetching feedback data:', error));
+        
+    function goToHomePage() {
+        window.location.href = "index.html"; 
+    }
+
+    function clearFeedbackSection() {
+        const feedbackSection = document.getElementById('feedbackSection');
+        feedbackSection.style.display = 'none'; // Hide the feedback section
+    }
+
+    // Function to load About Us content
+    $('.aboutUs').click(function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        clearFeedbackSection(); // Clear the feedback section
+        loadContent('about-us.html');
+    });
+
+    // Function to load Contact Us content
+    $('.contactUs').click(function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        clearFeedbackSection(); // Clear the feedback section
+        loadContent('contact-us.html');
+    });
+
+    // Function to load Crime List content
+    $('.crimeList').click(function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        clearFeedbackSection(); // Clear the feedback section
+        loadContent('crime-list.html');
+    });
+
+    // Function to load content using AJAX
+    function loadContent(url) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(response) {
+                $('#contentArea').html(response); // Display content in content area
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr, status, error);
+            }
+        });
+    }
+
+    document.getElementById('userType').addEventListener('change', function() {
+        const selectedValue = this.value;
+
+        if (selectedValue === 'user') {
+            window.location.href = "user_login.html";
+        } else if (selectedValue === 'police') {
+            window.location.href = "police_login.html";
+        } else if (selectedValue === 'register') {
+            window.location.href = "user_registration.html";
+        }
+    });
+</script>
+
+</body>
+</html>

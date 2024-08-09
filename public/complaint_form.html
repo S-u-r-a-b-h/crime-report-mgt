@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <title>Complaint Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container2 {
+      width: 80%;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="datetime-local"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    textarea {
+      height: 100px;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 16px;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .complaintTypeContainer {
+      margin-bottom: 20px;
+    }
+    #otherComplaintTypeDiv {
+      display: none;
+    }
+    /* Button styles */
+    .button-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+    .button-container button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-bottom: 10px;
+    }
+    .button-container button:hover {
+      background-color: #c82333;
+    }
+    /* Navbar styles */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100px;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    #userType {
+      padding: 10px 15px;
+      background-color: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #userType option {
+      padding: 12px 16px;
+      display: block;
+      border: none;
+      background-color: #f9f9f9;
+      color: black;
+      cursor: pointer;
+    }
+    #userType option:hover {
+      background-color: #f1f1f1;
+    }
+    .dropdown:hover #userType {
+      display: block;
+    }
+    .logo {
+      height: 100px;
+      width: 200px;
+      background-image: url("crime-trans.png");
+      background-size: cover;
+    }
+    .panel ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .panel ul li {
+      display: inline;
+      margin-right: 25px;
+    }
+    .panel ul li a {
+      text-decoration: none;
+      color: black;
+    }
+    .navbar-second {
+      background-color: rgb(38, 36, 36);
+      color: white;
+      padding: 10px 20px;
+    }
+    .navbar-second marquee {
+      width: 100%;
+      height: 100%;
+    }
+    .navbar-second p {
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+        <div class="logo"></div>
+        <div class="panel">
+            <ul> 
+                <li><a href="#" class="aboutUs"><i class="fas fa-address-card"></i> About Us</a></li>
+                <li><a href="#" class="contactUs"><i class="fas fa-phone"></i> Contact Us</a></li>
+                <li><a href="#" class="crimeList"><i class="fas fa-ellipsis-vertical"></i> Crime List</a></li>
+            </ul>
+        </div>           
+       
+        <div class="dropdown">
+            <select id="userType">
+                <option value="user" selected>Login as User</option>
+                <option value="police">Login as Police</option>
+                <option value="register">Register as User</option>
+            </select>
+        </div>
+    </div>
+<nav class="navbar-second">
+<marquee behavior="scroll" direction="left">
+    <p>"Crime undermines the fabric of society, eroding trust and stability."</p>
+</marquee>
+</nav>
+</header>
+<div id="contentArea"></div>
+  <div class="container2">
+    <h2>Complaint Form</h2>
+    <form id="complaintForm" method="post" action="/submit-complaint" enctype="multipart/form-data">
+      <div class="complaintTypeContainer">
+        <label for="complaintType">Complaint Type:</label>
+        <select id="complaintType" name="complaintType" required onchange="checkComplaintType()">
+          <option value="">Select Complaint Type</option>
+          <option value="General">General</option>
+          <option value="Noise">Noise</option>
+          <option value="Harassment">Harassment</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <label for="complaintId">Complaint Id:</label>
+      <input type="text" id="complaintId" name="complaintId" readonly>
+
+      <label for="name"> Complainant Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea>
+
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required>
+
+      <label for="dateTime">Date and Time:</label>
+      <input type="datetime-local" id="dateTime" name="dateTime" required>
+
+      <label for="evidence">Evidence:</label>
+      <input type="file" id="evidence" name="evidence">
+
+      <input type="submit" value="Submit Complaint">
+    </form>
+  </div>
+  
+  <!-- Button container -->
+  <div class="button-container">
+    <!-- Exit button -->
+    <button id="exitButton" onclick="goToHomePage()">Exit</button>
+
+    <!-- See Your Complaints button -->
+    <button id="seeComplaintsButton" onclick="seeYourComplaints()">See Your Complaints</button>
+  </div>
+
+<script>
+  function goToHomePage() {
+    window.location.href = "index.html";
+  }
+
+  function seeYourComplaints() {
+    // Add your code to handle the action when the "See Your Complaints" button is clicked
+    // For example, redirecting to a page where users can view their complaints
+    window.location.href = "your-complaints.html";
+  }
+
+  $(document).ready(function() {
+    // Function to load About Us content
+    $('.aboutUs').click(function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        loadContent('about-us.html');
+    });
+
+    // Function to load Contact Us content
+    $('.contactUs').click(function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        loadContent('contact-us.html');
+    });
+
+    // Function to load Crime List content
+    $('.crimeList').click(function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        loadContent('crime-list.html');
+    });
+
+    // Function to load content using AJAX
+    function loadContent(url) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(response) {
+                $('#contentArea').html(response); // Display content in content area
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr, status, error);
+            }
+        });
+    }
+});
+document.getElementById('userType').addEventListener('change', function() {
+    const selectedValue = this.value;
+
+    if (selectedValue === 'user') {
+        window.location.href = "user_login.html";
+    } else if (selectedValue === 'police') {
+        window.location.href = "police_login.html";
+    } else if (selectedValue === 'register') {
+        window.location.href = "user_registration.html";
+    }
+});
+</script>
+</body> 
+</html>
+  
